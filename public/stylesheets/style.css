@@ -1,0 +1,11 @@
+body {
+  font: 14px 'Verdana';
+
+  background-color:#F4F3EF !important;
+}
+
+a {
+  color: #00B7FF;
+}
+.buscar{margin-top: 15px;}
+.logo{width: 120px;margin-top: -12px;}

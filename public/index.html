@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Mercado</title>
+
+    <link rel="stylesheet" href="assets/components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link href="fonts/css/font-awesome.min.css" rel="stylesheets">    
+</head>
+<body ng-controller="ctrlPrincipal">
+    <nav class="navbar navbar-default">        
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <img alt="Brand" src="images/logotipo.png" class="logo img-responsive">
+            </a>
+        </div>        
+    </nav>
+
+    <!-- Inclui as modais -->
+    <div ng-include src="'templates/form.html'"></div>
+    <div ng-include src="'templates/editar.html'"></div>
+
+    <div class="clearfix"></div>
+
+    <div class="container">
+        <div class="alert alert-success hidden"></div>
+        <div class="alert alert-danger hidden"></div>      
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-md-9">
+                        <h3 class="text-primary">Produtos</h3>   
+                    </div>    
+                    <div class="form-group col-md-3 "> 
+                        <input type="text" class="form-control buscar" placeholder="Busque seu produto" ng-model="busca_produto">
+                    </div>
+                </div>
+            </div> 
+
+            <div class="panel-body">            
+                <button type="button" class="btn-sm btn-success pull-right" data-toggle="modal" data-target="#myModal">
+                    <span class="glyphicon glyphicon-plus"></span> Novo
+                </button>  
+
+                <table class="table table-responsive table-striped">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Produto</th>                           
+                            <th>Quantidade</th>
+                            <th>Descrição</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="produto in produtos |filter:busca_produto" >
+                            <td>{{produto.cod_produto}}</td>
+                            <td>{{produto.nome}}</td>                           
+                            <td>{{produto.qtdade}}</td>
+                            <td>{{produto.descricao}}</td>
+                            <td>
+                                <button class="btn-sm btn-warning" title="Editar" ng-click="listaInfo(produto)"  data-toggle="modal" data-target="#editar">
+                                    <span class="glyphicon glyphicon-pencil"></span> Editar
+                                </button>
+
+                                <button class="btn-sm btn-danger" title="Apagar" ng-click="apagarProduto(produto.cod_produto)">
+                                    <span class="glyphicon glyphicon-trash"></span> Apagar
+                                </button> 
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+       
+    <p class="text-center">Todos direitos reservados a Ackeley Lennon &copy;</p>
+    <p class="text-center">Feito com NodeJs <span class="glyphicon glyphicon-heart text-danger"></span> Angular</p>        
+
+    <script src="assets/components/jquery/dist/jquery.min.js"></script>
+    <script src="assets/components/tether/dist/js/tether.min.js"></script>
+    <script src="assets/components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/components/angular/angular.min.js"></script>
+    <script src="javascripts/app.js"></script>
+</body>
+</html>
+
