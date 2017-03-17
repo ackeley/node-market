@@ -1,2 +1,2 @@
 # node-market
-Teste com NodeJs e AngularJs
+Teste utilizando Mysql, NodeJs e Angular.
